@@ -12,7 +12,7 @@ class MainContainer extends Component{
         const pokemonsMap = pokemons.map((item,index)=>{
             console.log(item, 'map items')
             return (
-                <div>
+                <div key={index}>
                     <h1> {item.name} </h1>
                     <img src={item.sprites.front_default}/>
                 </div>
