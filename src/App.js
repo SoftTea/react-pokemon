@@ -10,12 +10,13 @@ class App extends Component {
       username: '',
       password: '',
       login: false,
+      pokemons: []
     }
   }
 
   getPokemon = async() => {
     try {
-    const pokemon = await fetch('https://pokeapi.co/api/v2/pokemon/');
+    const pokemon = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=2');
     const pokemonJson = await pokemon.json();
     const actualPokemon = [];
     console.log(pokemonJson)
@@ -51,6 +52,9 @@ class App extends Component {
   componentDidMount() {
     this.getPokemon().then((data)=>{
       console.log(data)
+      this.setState({
+        pokemons: data,
+      })
     })
   }
 
@@ -59,7 +63,7 @@ class App extends Component {
     return (
       <div>
         {this.state.login ? (
-        <MainContainer/>
+        <MainContainer pokemons={this.state.pokemons}/>
        ) : (
       <Login username={this.state.username} userHandler={this.userHandler} loginHandler={this.loginHandler}/>
       )}

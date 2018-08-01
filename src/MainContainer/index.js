@@ -7,8 +7,22 @@ class MainContainer extends Component{
 
     }
     render(){
+        const pokemons = this.props.pokemons;
+        console.log(pokemons, 'maincon')
+        const pokemonsMap = pokemons.map((item,index)=>{
+            console.log(item, 'map items')
+            return (
+                <div>
+                    <h1> {item.name} </h1>
+                    <img src={item.sprites.front_default}/>
+                </div>
+            )
+        });
         return (
-        <h1>TEST</h1>
+            <div>
+                <h1>These are Pokemons</h1>
+                    {pokemonsMap}
+            </div>
         )
     }
 }
