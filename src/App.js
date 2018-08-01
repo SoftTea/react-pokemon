@@ -20,12 +20,12 @@ class App extends Component {
     const actualPokemon = [];
     console.log(pokemonJson)
     
-    for( let i = 0; i< pokemonJson.length; i++) {
-      // console.log(element.url)
+    for( let i = 0; i< pokemonJson.results.length; i++) {
+      console.log(pokemonJson.results[i].url);
       const singlePokemon =  await fetch(pokemonJson.results[i].url);
-      console.log(singlePokemon)
+      const singlePokemonJson = await singlePokemon.json();
       // const singlePokemonJson = await singlePokemon.json();
-      // actualPokemon.push(singlePokemon);
+       actualPokemon.push(singlePokemonJson);
     }
     return actualPokemon
     } catch (err) {
